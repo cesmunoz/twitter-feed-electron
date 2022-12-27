@@ -5,6 +5,8 @@
 - [Cloning repo](#cloning-repo)
 - [Setup](#setup)
 - [Running application](#running-application)
+- [Build Application](#build-application)
+- [Run built application](#run-built-application)
 - [Documentation](#documentation)
 - [Testing](#testing)
 
@@ -21,6 +23,17 @@ yarn
 ## Running-Application
 
 > yarn start
+
+## Build Application
+
+> yarn build
+
+## Run Built Application
+
+> yarn package
+
+Go to (Finder/Explorer - depending on you OS)
+> release/build/[YOUR_OS]/ElectronReact.app
 
 ## Documentation
 
