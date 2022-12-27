@@ -6,6 +6,10 @@ module.exports = {
     'import/no-unresolved': 'error',
     // Since React 17 and typescript 4.1 you can safely disable the rule
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    suppressImplicitAnyIndexErrors: true,
   },
   parserOptions: {
     ecmaVersion: 2020,
