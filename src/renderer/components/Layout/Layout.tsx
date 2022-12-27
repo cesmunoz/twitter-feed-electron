@@ -28,10 +28,10 @@ export const Layout = () => {
         setLoading(false);
         addTweets(data.tweets);
         if (data.profile) {
-          if (!profiles[data.profile.username as any]) {
+          if (!profiles || !profiles[data.profile.username as any]) {
             addProfile(data.profile);
-            saveHistory(data.profile.username);
           }
+          saveHistory(data.profile.username);
           setCurrentProfileSearch(data.profile.username);
         }
       }
