@@ -12,9 +12,13 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import Store from 'electron-store';
+import { EVENT_CALL_NAME, STORAGE_KEYS } from '../constants';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { getTweetsByUserId, getUserProfileData } from './api/twitter';
 
+const store = new Store();
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -69,9 +73,13 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      preload: app.isPackaged
-        ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../.erb/dll/preload.js'),
+      // preload: app.isPackaged
+      //   ? path.join(__dirname, 'preload.js')
+      //   : path.join(__dirname, '../../.erb/dll/preload.js'),
+      // added
+      webSecurity: false,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -129,3 +137,44 @@ app
     });
   })
   .catch(console.log);
+
+ipcMain.on(EVENT_CALL_NAME.SEARCH_TWEETS_BY_USERNAME, async (event, args) => {
+  const { username, userId, meta } = args;
+  try {
+    let userProfileId = userId;
+    let profile = null;
+
+    if (username) {
+      profile = await getUserProfileData(username);
+
+      const history = store.get(STORAGE_KEYS.USERS_SEARCHED) as string[];
+      store.set(
+        'users_searched',
+        [...new Set([profile.username, ...history])].slice(0, 5)
+      );
+
+      userProfileId = profile.id;
+    }
+
+    const tweets = await getTweetsByUserId(userProfileId, meta);
+
+    event.reply(EVENT_CALL_NAME.SEARCH_TWEETS_BY_USERNAME, {
+      tweets,
+      ...(profile && { profile }),
+    });
+  } catch (error) {
+    event.reply(EVENT_CALL_NAME.SHOW_ERROR, {
+      error,
+    });
+  }
+});
+
+ipcMain.on(EVENT_CALL_NAME.GET_LOCAL_FROM_STORAGE, async (event) => {
+  const data = store.get('users_searched');
+  if (!data) {
+    store.set('users_searched', []);
+  }
+
+  const users = data as string[];
+  event.reply(EVENT_CALL_NAME.GET_LOCAL_FROM_STORAGE, users);
+});
