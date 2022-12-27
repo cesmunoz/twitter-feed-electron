@@ -4,12 +4,26 @@ import { FiMessageCircle } from 'react-icons/fi';
 import { BsChatLeftQuote } from 'react-icons/bs';
 import { useTweets } from './TweetsContext';
 
+type TweetPostProps = {
+  tweet: {
+    id: string;
+    text: string;
+    created_at: string;
+    public_metrics: {
+      reply_count: number;
+      retweet_count: number;
+      like_count: number;
+      quote_count: number;
+    };
+  };
+};
+
 const formatDate = (date: string) => {
   const dateObj = new Date(date);
   return format(dateObj, 'dd MMM');
 };
 
-export const TweetPosts = ({ tweet, lastSearchUser }: any) => {
+export const TweetPosts = ({ tweet }: TweetPostProps) => {
   const { currentProfileSearch } = useTweets();
   return (
     <div key={tweet.id}>
@@ -40,15 +54,6 @@ export const TweetPosts = ({ tweet, lastSearchUser }: any) => {
         <p className="text-base width-auto font-medium text-white flex-shrink">
           {tweet.text}
         </p>
-        {/* {tweet.entities?.urls?.length > 0 && (
-        <div className="md:flex-shrink pr-6 pt-3">
-          <img
-            className="rounded-lg w-full h-64"
-            src={`https://${tweet.entities?.urls[0]?.display_url}`}
-            alt="Tweet"
-          />
-        </div>
-      )} */}
         <div className="flex">
           <div className="w-full">
             <div className="flex items-center gap-10">

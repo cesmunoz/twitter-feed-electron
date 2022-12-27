@@ -37,6 +37,7 @@ export const SearchUserTweets = () => {
         <FaSearch className="h-5 w-5" />
       </button>
       <input
+        data-testid="search-input"
         type="search"
         name="search"
         placeholder="Search Twitter Feed by username"
@@ -46,7 +47,9 @@ export const SearchUserTweets = () => {
         className="h-10 px-10 pr-2 w-full rounded-full text-sm  bg-purple-white shadow rounded border-0 text-black focus:outline-none"
       />
       {error && <p className="text-red-500">{error}</p>}
-      <Button onClick={handleSearch}>Search Feed</Button>
+      <Button data-testid="search-button" onClick={handleSearch}>
+        Search Feed
+      </Button>
     </div>
   );
 };

@@ -7,6 +7,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
   useEffect(() => {
     ipcRenderer.send(EVENT_CALL_NAME.GET_LOCAL_FROM_STORAGE, key);
+    // istanbul ignore next
     ipcRenderer.on(EVENT_CALL_NAME.GET_LOCAL_FROM_STORAGE, (_, data) => {
       setStoredValue(data);
     });
@@ -24,5 +25,5 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
     });
   };
 
-  return [storedValue, setValue];
+  return [storedValue, setValue] as const;
 };

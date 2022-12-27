@@ -2,7 +2,6 @@ import { FcAbout } from 'react-icons/fc';
 import { FaTwitter, FaHome } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { NavLink } from '../UI/NavLink';
-import { useState } from 'react';
 
 const routes = [
   {

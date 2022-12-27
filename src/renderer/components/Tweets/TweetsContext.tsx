@@ -44,7 +44,7 @@ const initialContext = {
   currentProfileSearch: '',
 };
 
-const TweetsContext = createContext(null);
+export const TweetsContext = createContext(null);
 TweetsContext.displayName = 'TweetsContext';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -102,7 +102,13 @@ export const useTweets = (): TweetsContextType => {
   return context;
 };
 
-export function TweetsProvider({ children }: { children: React.ReactNode }) {
+export function TweetsProvider({
+  children,
+  ...restProps
+}: {
+  children: React.ReactNode;
+  restProps?: any;
+}) {
   const [state, dispatch] = useReducer(tweetsReducer, initialContext);
 
   const addTweets = (tweets: TweetsType[]) =>
@@ -133,6 +139,8 @@ export function TweetsProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <TweetsContext.Provider value={value}>{children}</TweetsContext.Provider>
+    <TweetsContext.Provider value={value} {...restProps}>
+      {children}
+    </TweetsContext.Provider>
   );
 }

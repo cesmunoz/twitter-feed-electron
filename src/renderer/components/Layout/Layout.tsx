@@ -21,6 +21,7 @@ export const Layout = () => {
   } = useTweets();
 
   useEffect(() => {
+    // istanbul ignore next
     ipcRenderer.on(
       EVENT_CALL_NAME.SEARCH_TWEETS_BY_USERNAME,
       (_, data: TweetsResponseType) => {
@@ -36,6 +37,7 @@ export const Layout = () => {
       }
     );
 
+    // istanbul ignore next
     ipcRenderer.on(EVENT_CALL_NAME.SHOW_ERROR, (_, data: any) => {
       setLoading(false);
       toast.error(data.error.message, {
