@@ -28,5 +28,15 @@ export type ProfileType = {
 
 export type TweetsResponseType = {
   profile: ProfileType;
-  tweets: TweetsType[];
+  tweets: SearchedTweetsType;
+};
+
+export type SearchedTweetsType = {
+  data: TweetsType[];
+  meta: {
+    newest_id: string;
+    oldest_id: string;
+    result_count: number;
+    next_token: string;
+  };
 };

@@ -1,5 +1,9 @@
 import { createContext, useContext, useReducer } from 'react';
-import { TweetsType, ProfileType } from '../../types/TweetTypes';
+import {
+  TweetsType,
+  ProfileType,
+  SearchedTweetsType,
+} from '../../types/TweetTypes';
 
 const ADD_TWEETS = 'ADD_TWEETS';
 const CLEAR_TWEETS = 'CLEAR_TWEETS';
@@ -28,12 +32,13 @@ type TweetsContextType = {
   profiles: ProfileType[];
   meta: TweetMetaType;
   currentProfileSearch: ProfileType | null;
-  addTweets: (tweets: TweetsType[]) => void;
+  addTweets: (tweets: SearchedTweetsType) => void;
   addProfile: (profile: ProfileType) => void;
   clearTweets: () => void;
   saveHistory: (username: string | string[]) => void;
   setCurrentProfileSearch: (userId: string) => void;
   setLoading: (isLoading: boolean) => void;
+  dispatch: (action: TweetsActionType) => void;
 };
 
 const initialContext = {
@@ -111,10 +116,10 @@ export function TweetsProvider({
 }) {
   const [state, dispatch] = useReducer(tweetsReducer, initialContext);
 
-  const addTweets = (tweets: TweetsType[]) =>
+  const addTweets = (tweets: SearchedTweetsType) =>
     dispatch({ type: ADD_TWEETS, payload: tweets });
 
-  const addProfile = (profile: ProfileType[]) =>
+  const addProfile = (profile: ProfileType) =>
     dispatch({ type: ADD_PROFILE, payload: profile });
 
   const clearTweets = () => dispatch({ type: CLEAR_TWEETS });
@@ -130,6 +135,7 @@ export function TweetsProvider({
 
   const value = {
     ...state,
+    dispatch,
     addTweets,
     clearTweets,
     saveHistory,
