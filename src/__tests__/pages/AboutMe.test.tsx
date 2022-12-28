@@ -9,7 +9,7 @@ jest.mock('electron', () => ({
   },
 }));
 
-describe('App', () => {
+describe('AboutMe', () => {
   it('should render', () => {
     expect(render(<AboutMe />)).toBeTruthy();
   });
