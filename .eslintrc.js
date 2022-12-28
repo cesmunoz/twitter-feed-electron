@@ -9,7 +9,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'react/jsx-props-no-spreading': 'off',
-    suppressImplicitAnyIndexErrors: true,
+    suppressImplicitAnyIndexErrors: 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,
