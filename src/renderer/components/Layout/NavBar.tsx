@@ -1,5 +1,5 @@
 import { FcAbout } from 'react-icons/fc';
-import { FaTwitter, FaHome } from 'react-icons/fa';
+import { FaTwitter, FaHome, FaReadme } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { NavLink } from '../UI/NavLink';
 
@@ -13,6 +13,11 @@ const routes = [
     path: '/about-me',
     name: 'About me',
     icon: FcAbout,
+  },
+  {
+    path: '/read-me',
+    name: 'Read me!',
+    icon: FaReadme,
   },
 ];
 
