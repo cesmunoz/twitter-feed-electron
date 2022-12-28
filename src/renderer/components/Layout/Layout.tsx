@@ -50,7 +50,14 @@ export const Layout = () => {
       ipcRenderer.removeAllListeners(EVENT_CALL_NAME.SEARCH_TWEETS_BY_USERNAME);
       ipcRenderer.removeAllListeners(EVENT_CALL_NAME.SHOW_ERROR);
     };
-  }, [addProfile, addTweets, saveHistory]);
+  }, [
+    addProfile,
+    addTweets,
+    profiles,
+    saveHistory,
+    setCurrentProfileSearch,
+    setLoading,
+  ]);
 
   return (
     <>

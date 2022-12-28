@@ -29,26 +29,24 @@ export const TweetPosts = ({ tweet }: TweetPostProps) => {
     <div key={tweet.id}>
       <hr className="border-gray-600" />
       <div className="flex flex-shrink-0 p-4 pb-0">
-        <a href="#" className="flex-shrink-0 group block">
-          <div className="flex items-center">
-            <div>
-              <img
-                className="inline-block h-10 w-10 rounded-full"
-                src={currentProfileSearch?.profile_image_url}
-                alt={currentProfileSearch?.name}
-              />
-            </div>
-            <div className="ml-3">
-              <p className="text-base leading-6 font-medium text-white gap-2">
-                {currentProfileSearch?.name}
-                <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150 ml-2">
-                  @{currentProfileSearch?.username}{' '}
-                  {`. ${formatDate(tweet.created_at)}`}
-                </span>
-              </p>
-            </div>
+        <div className="flex items-center">
+          <div>
+            <img
+              className="inline-block h-10 w-10 rounded-full"
+              src={currentProfileSearch?.profile_image_url}
+              alt={currentProfileSearch?.name}
+            />
           </div>
-        </a>
+          <div className="ml-3">
+            <p className="text-base leading-6 font-medium text-white gap-2">
+              {currentProfileSearch?.name}
+              <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150 ml-2">
+                @{currentProfileSearch?.username}{' '}
+                {`. ${formatDate(tweet.created_at)}`}
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
       <div className="pl-16">
         <p className="text-base width-auto font-medium text-white flex-shrink">

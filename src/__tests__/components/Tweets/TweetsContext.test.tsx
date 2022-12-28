@@ -10,7 +10,10 @@ type TestComponentProps = {
   historyToAdd?: any;
 };
 
-const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
+const TestComponent = ({
+  tweetsToAdd = {},
+  historyToAdd = [],
+}: TestComponentProps) => {
   const {
     isLoading,
     tweets,
@@ -29,7 +32,7 @@ const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
 
   return (
     <TweetsProvider>
-      <button type="button" onClick={() => addTweets(tweetsToAdd || [])}>
+      <button type="button" onClick={() => addTweets(tweetsToAdd || {})}>
         Add Tweets
       </button>
       <button
@@ -76,8 +79,8 @@ const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
 };
 
 const TestComponentContainer = ({
-  tweetsToAdd,
-  historyToAdd,
+  tweetsToAdd = {},
+  historyToAdd = [],
 }: TestComponentProps) => (
   <TweetsProvider>
     <TestComponent tweetsToAdd={tweetsToAdd} historyToAdd={historyToAdd} />
@@ -103,7 +106,7 @@ describe('TweetContext', () => {
 
     expect(getByTestId('isLoading')).toHaveTextContent('true');
     expect(getByTestId('tweets')).toHaveTextContent('[]');
-    expect(getByTestId('history')).toHaveTextContent('test1');
+    expect(getByTestId('history')).toHaveTextContent('[]');
     expect(getByTestId('profiles')).toHaveTextContent(
       '{"test":{"id":"123","username":"test","profile_image_url":"test","name":"test"}}'
     );

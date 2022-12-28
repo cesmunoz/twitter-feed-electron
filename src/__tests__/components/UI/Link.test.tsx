@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 
-import { Link } from 'renderer/components/UI/Link';
+import { LinkButton } from 'renderer/components/UI/Link';
 
 const renderComponent = (props: any) => {
-  return render(<Link {...props} />);
+  return render(<LinkButton {...props} />);
 };
 
 describe('Link', () => {

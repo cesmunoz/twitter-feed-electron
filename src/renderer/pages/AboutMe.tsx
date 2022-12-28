@@ -1,5 +1,5 @@
 import { shell } from 'electron';
-import { Link } from '../components/UI/Link';
+import { LinkButton } from '../components/UI/Link';
 
 export const AboutMe = () => {
   const handleOpenExternalLink = (url: string) => {
@@ -10,13 +10,13 @@ export const AboutMe = () => {
     <div className="w-full m-5">
       <div className="flex flex-col justify-center text-white gap-5">
         <h2 className="text-4xl font-bold mt-5">About me</h2>
-        <p className="text-2xl font-semibold">Hey! I'm Cesar</p>
-        <p className="text-2xl font-semibold">I'm a software developer</p>
+        <p className="text-2xl font-semibold">Hey! I&apos;m Cesar</p>
+        <p className="text-2xl font-semibold">I&apos;m a software developer</p>
         <div className="flex flex-col gap-5 mt-2">
           <p className="text-2xl font-semibold">Quick Links:</p>
           <ul className="list-disc list-inside">
             <li>
-              <Link
+              <LinkButton
                 text="LinkedIn"
                 url="https://www.linkedin.com/in/cesar-mu%C3%B1oz-61675949/"
                 urlText="cesar-munoz"
@@ -24,7 +24,7 @@ export const AboutMe = () => {
               />
             </li>
             <li>
-              <Link
+              <LinkButton
                 text="GitHub"
                 url="https://github.com/cesmunoz"
                 urlText="cesmunoz"
@@ -32,7 +32,7 @@ export const AboutMe = () => {
               />
             </li>
             <li>
-              <Link
+              <LinkButton
                 text="Twitter"
                 url="https://twitter.com/cesmdev"
                 urlText="cesmdev"
@@ -44,8 +44,8 @@ export const AboutMe = () => {
         <div className="flex flex-col gap-5 mt-2">
           <p className="text-2xl font-semibold">A few quick facts about me:</p>
           <ul className="list-disc list-inside">
-            <li>I'm from Argentina</li>
-            <li>I'm 35 years old</li>
+            <li>I&apos;m from Argentina</li>
+            <li>I&apos;m 35 years old</li>
             <li>Used to play baseball</li>
             <li>Love music, used to have a band</li>
             <li>Passionate about software</li>
