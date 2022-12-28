@@ -10,15 +10,6 @@ type TestComponentProps = {
   historyToAdd?: any;
 };
 
-const TestComponentContainer = ({
-  tweetsToAdd,
-  historyToAdd,
-}: TestComponentProps) => (
-  <TweetsProvider>
-    <TestComponent tweetsToAdd={tweetsToAdd} historyToAdd={historyToAdd} />
-  </TweetsProvider>
-);
-
 const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
   const {
     isLoading,
@@ -38,8 +29,11 @@ const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
 
   return (
     <TweetsProvider>
-      <button onClick={() => addTweets(tweetsToAdd || [])}>Add Tweets</button>
+      <button type="button" onClick={() => addTweets(tweetsToAdd || [])}>
+        Add Tweets
+      </button>
       <button
+        type="button"
         onClick={() =>
           addProfile({
             id: '123',
@@ -51,15 +45,24 @@ const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
       >
         Add Profile
       </button>
-      <button onClick={() => clearTweets()}>Clear Tweets</button>
-      <button onClick={() => saveHistory(historyToAdd || 'test1')}>
+      <button type="button" onClick={() => clearTweets()}>
+        Clear Tweets
+      </button>
+      <button
+        type="button"
+        onClick={() => saveHistory(historyToAdd || 'test1')}
+      >
         Save History
       </button>
-      <button onClick={() => setCurrentProfileSearch('test')}>
+      <button type="button" onClick={() => setCurrentProfileSearch('test')}>
         Set Current Profile Search
       </button>
-      <button onClick={() => setLoading(true)}>Set Loading</button>
-      <button onClick={() => dispatch({ type: 'test' })}>Dispatch</button>
+      <button type="button" onClick={() => setLoading(true)}>
+        Set Loading
+      </button>
+      <button type="button" onClick={() => dispatch({ type: 'test' })}>
+        Dispatch
+      </button>
       <div data-testid="isLoading">{isLoading.toString()}</div>
       <div data-testid="tweets">{JSON.stringify(tweets)}</div>
       <div data-testid="history">{JSON.stringify(history)}</div>
@@ -71,6 +74,15 @@ const TestComponent = ({ tweetsToAdd, historyToAdd }: TestComponentProps) => {
     </TweetsProvider>
   );
 };
+
+const TestComponentContainer = ({
+  tweetsToAdd,
+  historyToAdd,
+}: TestComponentProps) => (
+  <TweetsProvider>
+    <TestComponent tweetsToAdd={tweetsToAdd} historyToAdd={historyToAdd} />
+  </TweetsProvider>
+);
 
 describe('TweetContext', () => {
   it('should render', () => {

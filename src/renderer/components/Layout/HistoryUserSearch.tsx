@@ -12,7 +12,7 @@ import { Button } from '../UI/Button';
 
 export const HistoryUserSearch = () => {
   const location = useLocation();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     history,

@@ -41,7 +41,7 @@ describe('Home', () => {
   });
 
   it('should click on get more tweets', () => {
-    let setLoading = jest.fn();
+    const setLoading = jest.fn();
     const { getByText } = renderComponent({
       value: {
         tweets: [
@@ -65,7 +65,7 @@ describe('Home', () => {
   });
 
   it('should not allow to fetch if there is no currentProfileSearch', () => {
-    let setLoading = jest.fn();
+    const setLoading = jest.fn();
     const { getByText } = renderComponent({
       value: {
         tweets: [
@@ -79,7 +79,6 @@ describe('Home', () => {
       },
     });
 
-    //click on get more tweets
     getByText('Get more tweets').click();
     expect(setLoading).not.toBeCalled();
   });

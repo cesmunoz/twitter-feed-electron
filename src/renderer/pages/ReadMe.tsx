@@ -11,7 +11,7 @@ export const ReadMe = () => {
             <li>Save the last 5 searches</li>
             <li>Display the last 5 searches</li>
             <li>By clicking in the last 5 searches, it will search again</li>
-            <li>Get more tweets by clicking the button "Load more tweets"</li>
+            <li>Get more tweets by clicking the button Load more tweets</li>
           </ul>
         </div>
       </div>

@@ -1,15 +1,15 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { EVENT_CALL_NAME } from '../../../constants';
 import { ipcRenderer } from 'electron';
 import { useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { AboutMe } from 'renderer/pages/AboutMe';
 import { Home } from 'renderer/pages/Home';
+import { ReadMe } from 'renderer/pages/ReadMe';
 import { useTweets } from '../Tweets/TweetsContext';
 import { TweetsResponseType } from '../../types/TweetTypes';
 import { NavBar } from './NavBar';
 import { SearchContainer } from './SearchContainer';
-import { ReadMe } from 'renderer/pages/ReadMe';
+import { EVENT_CALL_NAME } from '../../../constants';
 
 export const Layout = () => {
   const {

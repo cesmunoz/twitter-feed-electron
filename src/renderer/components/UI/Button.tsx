@@ -1,4 +1,9 @@
-export const Button = ({ onClick, children, ...restProps }: any) => {
+type ButtonProps = {
+  onClick: () => void;
+  children: React.ReactNode;
+};
+
+export const Button = ({ onClick, children, ...restProps }: ButtonProps) => {
   return (
     <button
       type="button"

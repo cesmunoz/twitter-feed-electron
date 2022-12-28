@@ -1,5 +1,5 @@
-import { HistoryUserSearch } from "./HistoryUserSearch";
-import { SearchUserTweets } from "./SearchUserTweets";
+import { HistoryUserSearch } from './HistoryUserSearch';
+import { SearchUserTweets } from './SearchUserTweets';
 
 export const SearchContainer = () => {
   return (
