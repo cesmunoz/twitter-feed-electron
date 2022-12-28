@@ -105,12 +105,7 @@
       "release/app/dist"
     ],
     "transform": {
-      "\\.(ts|tsx|js|jsx)$": [
-        "ts-jest",
-        {
-          "isolatedModules": true
-        }
-      ]
+      "\\.(ts|tsx|js|jsx)$": "ts-jest"
     }
   },
   "dependencies": {
