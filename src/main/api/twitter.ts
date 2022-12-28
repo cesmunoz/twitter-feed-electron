@@ -41,7 +41,6 @@ export const getUserProfileData = async (username: string) => {
 
     return userResponse.data.data;
   } catch (e: any) {
-    console.log(e)
     if (apiError) {
       throw new Error(e.message);
     }
