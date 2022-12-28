@@ -9,6 +9,7 @@ import { useTweets } from '../Tweets/TweetsContext';
 import { TweetsResponseType } from '../../types/TweetTypes';
 import { NavBar } from './NavBar';
 import { SearchContainer } from './SearchContainer';
+import { ReadMe } from 'renderer/pages/ReadMe';
 
 export const Layout = () => {
   const {
@@ -62,6 +63,7 @@ export const Layout = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/read-me" element={<ReadMe />} />
             <Route path="*" element={<div>404</div>} />
           </Routes>
         </div>
